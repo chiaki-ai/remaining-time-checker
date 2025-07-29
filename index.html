@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="残り時間チェッカー">
+  <meta property="og:description" content="あなたの残された自由な時間を計算します。">
+  <meta property="og:image" content="./ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>残り時間チェッカー</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>あなたに残された自由な時間は？</h1>
+  <p>平均的な睡眠時間(7時間)と寿命(84歳)を元に、あなたの残された自由な時間を計算します。</p>
+
+  <div class="input-area">
+    <label for="birthdate">生年月日</label>
+    <input type="date" id="birthdate">
+    <span>または</span>
+    <label for="age">年齢</label>
+    <input type="number" id="age" min="0" max="120">
+    <button onclick="calculate()">計算する</button>
+  </div>
+
+  <div id="result"></div>
+
+  <div id="todo-area" style="display:none;">
+    <h2>この時間で、絶対にやりたいこと</h2>
+    <input type="text" id="todo1" placeholder="1. 例：世界一周旅行に行く">
+    <input type="text" id="todo2" placeholder="2. 例：自分の本を出版する">
+    <input type="text" id="todo3" placeholder="3. 例：家族と過ごす時間を増やす">
+    <button onclick="share()">Xでシェアする</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
