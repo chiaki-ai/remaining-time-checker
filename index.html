@@ -11,26 +11,85 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>あなたに残された自由な時間は？</h1>
-  <p>平均的な睡眠時間(7時間)と寿命(84歳)を元に、あなたの残された自由な時間を計算します。</p>
+  <div class="content-wrapper">
+    <h1>あなたの人生、残りどれくらい？</h1>
+    <p>限りある自由な時間。<br>平均的な睡眠時間(7時間)と寿命(84歳)を元に、<br>あなたに残された貴重な時間を計算します。</p>
 
-  <div class="input-area">
-    <label for="birthdate">生年月日</label>
-    <input type="date" id="birthdate">
-    <span>または</span>
-    <label for="age">年齢</label>
-    <input type="number" id="age" min="0" max="120">
-    <button onclick="calculate()">計算する</button>
-  </div>
+    <div class="input-area">
+      <div class="input-group">
+        <label for="birthdate">生年月日</label>
+        <input type="date" id="birthdate" placeholder="YYYY/MM/DD">
+      </div>
+      <span class="or-separator">または</span>
+      <div class="input-group">
+        <label for="age">年齢</label>
+        <input type="number" id="age" min="0" max="120">
+      </div>
+      <button onclick="calculate()">計算する</button>
+    </div>
 
-  <div id="result"></div>
+    <div id="result"></div>
 
-  <div id="todo-area" style="display:none;">
-    <h2>この時間で、絶対にやりたいこと</h2>
-    <input type="text" id="todo1" placeholder="1. 例：世界一周旅行に行く">
-    <input type="text" id="todo2" placeholder="2. 例：自分の本を出版する">
-    <input type="text" id="todo3" placeholder="3. 例：家族と過ごす時間を増やす">
-    <button onclick="share()">Xでシェアする</button>
+    <div id="todo-area" style="display:none;">
+      <h2>この時間で、絶対にやりたいこと</h2>
+      <p>もし思いつかないなら、まずは身近なことから考えてみましょう。</p>
+      <input type="text" id="todo1" placeholder="1. 例：新しい趣味を始める">
+      <input type="text" id="todo2" placeholder="2. 例：大切な人に感謝を伝える">
+      <input type="text" id="todo3" placeholder="3. 例：健康的な生活習慣を身につける">
+      <button onclick="share()">Xでシェアする</button>
+    </div>
+
+    <div class="guidance-section" style="display:none;" id="guidance-section">
+      <h2>「好きなこと」はなくていい。「やりたいこと」に変換すればいい</h2>
+      <p>「好きなことがないんです」<br>「何をやりたいか、ずっとわからない」<br>そんな声をよく聞きます。でも本当は、“好き”を見つけることがゴールじゃないんですよね。</p>
+
+      <h3>好きなことより「やりたいこと」のほうが見つけやすい理由</h3>
+      <p>「好き」は感情ベース、「やりたい」は行動ベースです。<br>たとえば、</p>
+      <ul>
+        <li>本を読むのが“好き” → 書評ブログを“やってみたい”</li>
+        <li>散歩が“好き” → 地元の観光マップを“作ってみたい”</li>
+        <li>誰かの話を聞くのが“好き” → コーチングを“学んでみたい”</li>
+      </ul>
+      <p>こんなふうに、「好き」を“動詞化”すれば「やりたいこと」に変換できます。<br>大事なのは、「今の自分」で完璧に見つけようとしないこと。</p>
+
+      <h3>それでも見つからない人へ：「場所を変える」という選択肢</h3>
+      <p>同じ環境、同じ人間関係、同じSNS。<br>これで何か新しい“ひらめき”を期待するのは、正直ムリがあります。<br>だから、まずは“場所”を変えてください。</p>
+      <ul>
+        <li>日帰りでもいい、旅行に行く</li>
+        <li>引っ越しを前提に物件を見てみる</li>
+        <li>カフェや図書館で読書する</li>
+        <li>あるいは本当に、1冊の本と出会うだけでもいい</li>
+      </ul>
+
+      <h3>思考と場所を変えてくれる5冊の本</h3>
+      <div class="book-cards-container">
+        <div class="book-card">
+          <h4>1. 『エッセンシャル思考』グレッグ・マキューン</h4>
+          <p>「より少なく、しかしより良く」。<br>常識にとらわれず、自分にとって本当に重要なことを見極める力が養えます。<br>→ 「全部やろうとして何も進まない」人に。<br><a href="https://amzn.to/3H4hSIM" target="_blank">詳細を見る</a></p>
+        </div>
+        <div class="book-card">
+          <h4>2. 『LIFE SHIFT』リンダ・グラットン</h4>
+          <p>100年時代の人生戦略。<br>→ 「この会社でこのまま定年まで？」と悩んでいるあなたに、人生を再設計するヒントを。<br><a href="https://amzn.to/4l8w4OR" target="_blank">詳細を見る</a></p>
+        </div>
+        <div class="book-card">
+          <h4>3. 『深夜特急』沢木耕太郎</h4>
+          <p>旅を通じて「自分」を見つけた著者のリアル。<br>→ 一歩踏み出したいけど怖い、そんな時の背中を押してくれる一冊。<br><a href="https://amzn.to/4ffJpTX" target="_blank">詳細を見る</a></p>
+        </div>
+        <div class="book-card">
+          <h4>4. 『やりたいことの見つけ方』八木仁平</h4>
+          <p>自己分析で「迷子の自分」に言語を与える。<br>→ 行動できないまま悩んでいる人に理論で光を。<br><a href="https://amzn.to/44XFqrX" target="_blank">詳細を見る</a></p>
+        </div>
+        <div class="book-card">
+          <h4>5. 『今日の人生』益田ミリ</h4>
+          <p>丁寧に暮らす日々の中に、“豊かさ”が宿る。<br>→ 「やりたいことがなくても、別にいいかも」と思わせてくれる本。<br><a href="https://amzn.to/3U1IU6q" target="_blank">詳細を見る</a></p>
+        </div>
+      </div>
+
+      <h2>やりたいことは、「あなたの外」にある</h2>
+      <p>やりたいことは、頭の中でうんうん考えても見つからない。<br>動いた先、出会った人、ふと読んだ一冊の中に、<strong>“変な引っかかり”</strong>として見つかるものです。</p>
+
+      <p>「好きなことが見つからない」は、終わりじゃない。<br>むしろ、“やりたいこと”が見つかるスタート地点です。</p>
+    </div>
   </div>
 
   <script src="script.js"></script>

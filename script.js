@@ -40,7 +40,8 @@ function calculate() {
 
   const resultDiv = document.getElementById("result");
   resultDiv.innerHTML = `
-    <p><strong>私に残された自由な時間は──</strong></p>
+    <p><strong>あなたの人生の時間は、想像よりもずっと短いかもしれません。</strong></p>
+    <p><strong>残された自由な時間は──</strong></p>
     <p>約 ${resultData.years} 年</p>
     <p>約 ${resultData.days} 日</p>
     <p>約 ${resultData.hours} 時間</p>
@@ -48,6 +49,7 @@ function calculate() {
   `;
 
   document.getElementById("todo-area").style.display = "block";
+  document.getElementById("guidance-section").style.display = "block";
 }
 
 function share() {
@@ -56,21 +58,21 @@ function share() {
   const todo3 = document.getElementById("todo3").value || "（空白）";
 
   const text = `
-私に残された自由な時間は──
+人生は短い。残された自由な時間は──
 
-⏳ 約 ${resultData.years} 年
+🌏 約 ${resultData.years} 年
 🗓️ 約 ${resultData.days} 日
 ⏰ 約 ${resultData.hours} 時間
 ⏳ 約 ${resultData.minutes} 分
 
-だから、絶対にやりたいことを3つだけ書いた。
+この限られた時間で、本当にやりたいことは何ですか？
+私はこの3つをやり遂げたい。
 
 1. ${todo1}
 2. ${todo2}
 3. ${todo3}
 
-時間はもう、思ってるほど多くない。
-あなたも今すぐ「残り時間」計算してみて
+時間は待ってくれない。今すぐあなたの「残り時間」を計算して、行動しよう。
 
 #残り時間チェッカー @yadori816
 `;
@@ -79,3 +81,4 @@ function share() {
   const encodedText = encodeURIComponent(text + url);
   window.open(`https://twitter.com/intent/tweet?text=${encodedText}`);
 }
+🌏
