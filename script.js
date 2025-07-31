@@ -72,10 +72,10 @@ function share() {
 時間はもう、思ってるほど多くない。
 あなたも今すぐ「残り時間」計算してみて
 
-#残り時間チェッカー
+#残り時間チェッカー @yadori816
 `;
 
-  const url = "https://h22486.github.io/remaining-time-checker/";
+  const url = "https://remaining-time-checker.vercel.app/";
   const encodedText = encodeURIComponent(text + url);
   window.open(`https://twitter.com/intent/tweet?text=${encodedText}`);
 }
