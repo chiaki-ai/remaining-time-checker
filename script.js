@@ -86,4 +86,3 @@ function share() {
   const encodedText = encodeURIComponent(text + url);
   window.open(`https://twitter.com/intent/tweet?text=${encodedText}`);
 }
-🌏
