@@ -166,6 +166,13 @@ button:hover {
   transform: translateY(-5px);
 }
 
+.book-cover {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
 .book-card h4 {
   font-size: 1.1em;
   color: #2c3e50;
