@@ -50,7 +50,8 @@ h1 {
 }
 
 input[type="date"],
-input[type="number"] {
+input[type="number"],
+select {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -78,6 +79,19 @@ button:hover {
   font-size: 1.8em; /* Increased font size */
   line-height: 1.6;
   font-weight: bold; /* Make the text bold */
+}
+
+#event-result {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-left: 5px solid #3498db;
+    text-align: left;
+}
+
+#event-result p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
 }
 
 #todo-area {
@@ -216,7 +230,8 @@ button:hover {
   }
 
   input[type="date"],
-  input[type="number"] {
+  input[type="number"],
+  select {
     width: 100%; /* Full width within the input group */
     max-width: 250px; /* Limit max width */
   }
@@ -257,4 +272,69 @@ button:hover {
   .book-cards-container {
     grid-template-columns: 1fr; /* Stack cards on very small screens */
   }
+}
+
+/* Word break for very long words to prevent overflow */
+p, h1, h2, h3, h4, li {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.accordion-prompt {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.accordion-header {
+    cursor: pointer;
+    padding: 15px;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion-content {
+    display: none;
+    padding: 15px;
+    border-top: 1px solid #ccc;
+}
+
+.accordion-icon {
+    transition: transform 0.3s ease;
+}
+
+.accordion-icon.open {
+    transform: rotate(180deg);
+}
+
+.audible-button {
+    display: inline-block;
+    background-color: #007bff;
+    color: #ffffff !important; /* Ensure text color is white */
+    padding: 15px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.audible-button:hover {
+    background-color: #0056b3;
+    text-decoration: none !important;
+}
+
+.fas {
+    margin-right: 10px;
+}
+
+.sns-bye-image {
+    display: block;
+    margin: 20px auto;
+    max-width: 80%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }

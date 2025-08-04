@@ -8,92 +8,170 @@
   <meta property="og:image" content="./ogp.png">
   <meta name="twitter:card" content="summary_large_image">
   <title>残り時間チェッカー</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="content-wrapper">
-    <h1>あなたの人生、残りどれくらい？</h1>
+    <h1><i class="fas fa-hourglass-half"></i> あなたの人生、残りどれくらい？</h1>
     <p>限りある自由な時間。<br>平均的な睡眠時間(7時間)と寿命(84歳)を元に、<br>あなたに残された貴重な時間を計算します。</p>
 
     <div class="input-area">
       <div class="input-group">
-        <label for="birthdate">生年月日</label>
+        <label for="birthdate">あなたの生年月日</label>
         <input type="date" id="birthdate" placeholder="YYYY/MM/DD">
       </div>
       <span class="or-separator">または</span>
       <div class="input-group">
-        <label for="age">年齢</label>
+        <label for="age">あなたの年齢</label>
         <input type="number" id="age" min="0" max="120">
+      </div>
+      <div class="input-group">
+        <label for="favoriteSeason">好きな季節（任意）</label>
+        <select id="favoriteSeason">
+          <option value="">選択してください</option>
+          <option value="春">春</option>
+          <option value="夏">夏</option>
+          <option value="秋">秋</option>
+          <option value="冬">冬</option>
+        </select>
       </div>
       <button onclick="calculate()">計算する</button>
     </div>
 
     <div id="result"></div>
+    <div id="event-result"></div>
 
     <div id="todo-area" style="display:none;">
-      <h2>この時間で、絶対にやりたいこと</h2>
+      <h2><i class="fas fa-bullseye"></i> この時間で、絶対にやりたいこと</h2>
       <p>具体的な期限を決めると、夢はぐっと近づきます。<br>例えばこんなふうに、期間と結びつけてみませんか？</p>
-      <input type="text" id="todo1" placeholder="明日までにやりたいこと">
-      <input type="text" id="todo2" placeholder="半年後までにやりたいこと">
-      <input type="text" id="todo3" placeholder="一生のうちにやりたいこと">
-      <button onclick="share()">Xでシェアする</button>
+      <input type="text" id="todo1" placeholder="例：明日までに、近所のカフェで1時間だけ読書する">
+      <input type="text" id="todo2" placeholder="例：半年後までに、家族で温泉旅行に行く">
+      <input type="text" id="todo3" placeholder="例：一生のうちに、自分の手で何か作品を作って販売する">
+      <button onclick="share()">目標を宣言して、未来の自分と約束する</button>
     </div>
 
     <div class="guidance-section" style="display:none;" id="guidance-section">
-      <h2>「好きなこと」はなくていい。「やりたいこと」に変換すればいい</h2>
-      <p>「好きなことがないんです」<br>「何をやりたいか、ずっとわからない」<br>そんな声をよく聞きます。でも本当は、“好き”を見つけることがゴールじゃないんですよね。</p>
+        <p class="accordion-prompt">↓ クリックして、あなたの時間を最大化するヒントを読む</p>
+      <div class="accordion">
+        <div class="accordion-header">
+          <h2><i class="fas fa-lightbulb"></i> あなたの残り時間を「最高の時間」に変えるヒント</h2>
+          <i class="fas fa-chevron-down accordion-icon"></i>
+        </div>
+        <div class="accordion-content">
+          <h2><i class="fas fa-search"></i> 「好きなこと探し」をしてる時点で、あなたは動いてない</h2>
+          <p>「好きなことが見つからない」<br>このセリフ、SNSでも日常会話でも、耳タコになるほど聞きます。</p>
+          <p>でも、この言葉の裏にはもう一つの本音が隠れています。<br>それは──<br>「自分はまだ動いてないけど、動きたくなる理由を探してます」ということ。</p>
+          <p>冷たく聞こえるかもしれませんが、これはほとんどの場合、事実です。<br>“好きなこと探し”って、じつは「過去の経験や感情の中をぐるぐる回る作業」です。</p>
+          <p>たとえば学生時代に好きだった趣味、昔ハマった音楽、あのとき感動した映画…<br>確かに大事な記憶ですが、それは“過去の環境”と“過去の自分”が作った好きです。<br>化石を掘り起こすように過去の感情を探しても、それは今の生活にフィットしない場合が多い。</p>
+          <p>そして、化石は掘った瞬間から古くなります。<br>あなたの“好き”も、見つけた瞬間から古びていく。<br>だから、それをゴールにするのは危険なんです。</p>
 
-      <h3>好きなことより「やりたいこと」のほうが見つけやすい理由</h3>
-      <p>「好き」は感情ベース、「やりたい」は行動ベースです。<br>たとえば、</p>
-      <ul>
-        <li>本を読むのが“好き” → 書評ブログを“やってみたい”</li>
-        <li>散歩が“好き” → 地元の観光マップを“作ってみたい”</li>
-        <li>誰かの話を聞くのが“好き” → コーチングを“学んでみたい”</li>
-      </ul>
-      <p>こんなふうに、「好き」を“動詞化”すれば「やりたいこと」に変換できます。<br>大事なのは、「今の自分」で完璧に見つけようとしないこと。</p>
+          <h2><i class="fas fa-rocket"></i> 好きより「やりたい」が強い理由</h2>
+          <p>「好き」は感情。<br>感情は、天気みたいにコロコロ変わります。<br>昨日まで「これが好き！」だったのに、今日はもう飽きている。<br>SNSの流行や誰かの影響で、簡単に上書きされてしまう。</p>
+          <p>一方で「やりたい」は行動です。<br>行動は、現実を動かすレバーです。<br>やったら何かしらの変化が起きます。<br>変化が起きるからこそ、自分の中に“手応え”が残る。</p>
+          <p>たとえば──</p>
+          <ul>
+            <li>本を読むのが好き → 書評ブログをやってみる</li>
+            <li>散歩が好き → 地元の観光マップを作ってみる</li>
+            <li>誰かの話を聞くのが好き → コーチングを学んでみる</li>
+          </ul>
+          <p>これらは全部、動詞です。<br>動詞は結果を生みます。<br>そして結果は、新しい「好き」を作ることすらある。</p>
+          <p>つまり順番は、<br><strong>好き → 行動 ではなく、行動 → 好き</strong>。<br>だから「好きがない」と悩む前に、とにかくやりたいことを小さくやってみるのが正解です。</p>
 
-      <h3>それでも見つからない人へ：「場所を変える」という選択肢</h3>
-      <p>同じ環境、同じ人間関係、同じSNS。<br>これで何か新しい“ひらめき”を期待するのは、正直ムリがあります。<br>だから、まずは“場所”を変えてください。</p>
-      <ul>
-        <li>日帰りでもいい、旅行に行く</li>
-        <li>引っ越しを前提に物件を見てみる</li>
-        <li>カフェや図書館で読書する</li>
-        <li>あるいは本当に、1冊の本と出会うだけでもいい</li>
-      </ul>
+          <h2><i class="fas fa-map-signs"></i> それでも動けない理由は「環境がクソだから」</h2>
+          <p>ここまで聞いても、「いや、それができないんだよ…」という声が必ず出ます。<br>その理由はシンプルです。</p>
+          <p><strong>環境がクソだから。</strong></p>
+          <p>同じデスク、同じ通勤路、同じ職場の顔ぶれ、同じSNSタイムライン。<br>この“同じ”に埋もれたまま「新しいひらめきがほしい」と思うのは、宝くじを買わずに当選発表を待つようなものです。</p>
+          <p>あなたの脳は、環境からの刺激で動きます。<br>つまり、刺激を変えなければ発想も変わらない。</p>
+          <p>ではどうするか？<br>場所を変えるんです。</p>
+          <ul>
+            <li>日帰りでいいから、知らない街に行く</li>
+            <li>引っ越す気がなくても、不動産サイトで物件を見に行く</li>
+            <li>普段入らないカフェや図書館で過ごす</li>
+            <li>まったく読んだことのないジャンルの本を開く</li>
+          </ul>
+          <p>大きな引っ越しや長期旅行じゃなくてもいい。<br>ほんの数時間、場所を変えるだけで、思考は驚くほど軽くなります。</p>
 
-      <h3>思考と場所を変えてくれる5冊の本</h3>
-      <div class="book-cards-container">
-        <div class="book-card">
-          <img src="essentialism.jpg" alt="エッセンシャル思考" class="book-cover">
-          <h4>1. 『エッセンシャル思考』グレッグ・マキューン</h4>
-          <p>「より少なく、しかしより良く」。<br>常識にとらわれず、自分にとって本当に重要なことを見極める力が養えます。<br>→ 「全部やろうとして何も進まない」人に。<br><a href="https://amzn.to/3H4hSIM" target="_blank">詳細を見る</a></p>
-        </div>
-        <div class="book-card">
-          <img src="life shift.jpg" alt="LIFE SHIFT" class="book-cover">
-          <h4>2. 『LIFE SHIFT』リンダ・グラットン</h4>
-          <p>100年時代の人生戦略。<br>→ 「この会社でこのまま定年まで？」と悩んでいるあなたに、人生を再設計するヒントを。<br><a href="https://amzn.to/4l8w4OR" target="_blank">詳細を見る</a></p>
-        </div>
-        <div class="book-card">
-          <img src="sinnyatokkyu.jpg" alt="深夜特急" class="book-cover">
-          <h4>3. 『深夜特急』沢木耕太郎</h4>
-          <p>旅を通じて「自分」を見つけた著者のリアル。<br>→ 一歩踏み出したいけど怖い、そんな時の背中を押してくれる一冊。<br><a href="https://amzn.to/4ffJpTX" target="_blank">詳細を見る</a></p>
-        </div>
-        <div class="book-card">
-          <img src="yaritaikoto.jpg" alt="やりたいことの見つけ方" class="book-cover">
-          <h4>4. 『やりたいことの見つけ方』八木仁平</h4>
-          <p>自己分析で「迷子の自分」に言語を与える。<br>→ 行動できないまま悩んでいる人に理論で光を。<br><a href="https://amzn.to/44XFqrX" target="_blank">詳細を見る</a></p>
-        </div>
-        <div class="book-card">
-          <img src="kyounojinsei.jpg" alt="今日の人生" class="book-cover">
-          <h4>5. 『今日の人生』益田ミリ</h4>
-          <p>丁寧に暮らす日々の中に、“豊かさ”が宿る。<br>→ 「やりたいことがなくても、別にいいかも」と思わせてくれる本。<br><a href="https://amzn.to/3U1IU6q" target="_blank">詳細を見る</a></p>
+          <h2><i class="fas fa-book-open"></i> 環境を変えてくれる本たち</h2>
+          <p>ここからは、僕自身が「やりたいこと」に切り替えるきっかけをくれた5冊です。<br>どれも“読むだけで場所を変えたような感覚”になる本ばかり。</p>
+          <div class="book-cards-container">
+            <div class="book-card">
+              <img src="essentialism.jpg" alt="エッセンシャル思考" class="book-cover">
+              <h4>1. 『エッセンシャル思考』グレッグ・マキューン</h4>
+              <p>「より少なく、しかしより良く」。<br>現代人は選択肢を増やしすぎて、自分を麻痺させています。<br>この本は、取捨選択の基準をくれる一冊。<br>→ 「全部やろうとして何も進まない」人に。<br><a href="https://amzn.to/3H4hSIM" target="_blank">Amazonで見る</a></p>
+            </div>
+            <div class="book-card">
+              <img src="life shift.jpg" alt="LIFE SHIFT" class="book-cover">
+              <h4>2. 『LIFE SHIFT』リンダ・グラットン</h4>
+              <p>100年時代の人生戦略。<br>このまま定年まで同じ会社で過ごす未来に疑問があるなら必読です。<br>→ 人生の再設計のヒントをくれる。<br><a href="https://amzn.to/4l8w4OR" target="_blank">Amazonで見る</a></p>
+            </div>
+            <div class="book-card">
+              <img src="sinnyatokkyu.jpg" alt="深夜特急" class="book-cover">
+              <h4>3. 『深夜特急』沢木耕太郎</h4>
+              <p>旅のリアルが詰まった名作。<br>一歩踏み出したいけど怖いとき、背中を押してくれる物語。<br><a href="https://amzn.to/4ffJpTX" target="_blank">Amazonで見る</a></p>
+            </div>
+            <div class="book-card">
+              <img src="yaritaikoto.jpg" alt="やりたいことの見つけ方" class="book-cover">
+              <h4>4. 『やりたいことの見つけ方』八木仁平</h4>
+              <p>自己分析の教科書。<br>「行動できないまま悩んでいる」人が理論で動けるようになる。<br><a href="https://amzn.to/44XFqrX" target="_blank">Amazonで見る</a></p>
+            </div>
+            <div class="book-card">
+              <img src="kyounojinsei.jpg" alt="今日の人生" class="book-cover">
+              <h4>5. 『今日の人生』益田ミリ</h4>
+              <p>日常の小さな豊かさを見つめ直すエッセイ漫画。<br>「やりたいことがなくても、別にいい」と思える救い。<br><a href="https://amzn.to/3U1IU6q" target="_blank">Amazonで見る</a></p>
+            </div>
+          </div>
+
+          <h2><i class="fas fa-check-circle"></i> 結論：「好きなこと探し」は捨てていい</h2>
+          <p>やりたいことは、頭の中ではなく、外にあります。<br>動いた先、出会った人、偶然手に取った本の中に、“変な引っかかり”として見つかるものです。</p>
+          <p>「好きなことが見つからない」は、終わりじゃありません。<br>むしろ、“やりたいこと”が見つかるスタート地点です。</p>
+          <p>まずは、この5冊のどれか1冊を手に取ってみてください。<br>その瞬間から、あなたの環境は確実に変わります。</p>
+          
+          <hr>
+
+          <h2><i class="fas fa-moon"></i> 深夜1時、ベッドで光るスマホ。あなたの時間を喰う“それ”の正体</h2>
+          <p>深夜1時。あなたはベッドの中にいる。<br>
+          部屋の電気は消えているのに、顔だけが青白く照らされている。</p>
+          <p>「あと1本だけ…」</p>
+          <p>そう思って開いたショート動画。気づけば1時間が経ち、指は勝手に次の動画をスワイプしている。<br>
+          脳がじわじわと溶けていくような感覚。<br>
+          そして、強烈な自己嫌悪と共に眠りにつく。</p>
+          <p><strong>──これは、あなたのせいじゃない。</strong></p>
+          <p>そのスマホの中にいる“それ”は、あなたの貴重な「時間」と「未来」をエサに成長するモンスターだ。<br>
+          意志の力？ 根性？<br>
+          そんなもので、人類史上最高の頭脳たちが作った時間泥棒に勝てるわけがない。</p>
+          
+          <h2><i class="fab fa-xing-square"></i> まずは、最大の時間泥棒をスマホから追い出せ</h2>
+          <img src="byebyeX.jpg" alt="SNSアプリを削除するイメージ画像" class="sns-bye-image">
+          <p>最初のステップは、敵の侵入経路を断つこと。<br>
+          Instagram、X（旧Twitter）、TikTok…それらのアプリアイコンを長押しして、震え始めたら「Appを削除」を押す。たったこれだけ。</p>
+          <p>「でも、つながりが…」<br>
+          大丈夫。本当に大事な人とは、アプリがなくてもつながれる。そして、アプリを消して生まれた時間で、あなたはもっと価値のあるつながりを現実世界で築けるようになる。</p>
+
+          <hr>
+          <h2><i class="fas fa-running"></i> 時間を取り戻す、たった一つの冴えたやり方</h2>
+          <p>モンスターのエサを断ち切ったら、次にあなたの成長をエサにする“別の何か”をインストールする。<br>
+          答えは、<strong>Audible（オーディブル）</strong>。</p>
+          <p>耳から、知識を、物語を、あなたの脳に直接流し込む。</p>
+          <ul>
+            <li>ゾンビのように往復していた通勤時間が、未来への投資時間に変わる。</li>
+            <li>虚無だった皿洗いの時間が、ベストセラー作家のセミナーに変わる。</li>
+            <li>退屈なランニングが、壮大な冒険の始まりに変わる。</li>
+          </ul>
+          <p>「本を読む時間がない」んじゃない。<br>
+          <strong>「耳のすきま時間」を、あなたはまだ使っていないだけだ。</strong></p>
+          <hr>
+          <h2><i class="fas fa-arrow-pointer"></i> 今すぐ、人生の“奪還ボタン”を押せ</h2>
+          <p>今、この瞬間も、あなたの時間はモンスターに喰われている。<br>
+          でも、まだ間に合う。</p>
+          <p><strong>下のリンクは、あなたの人生を取り戻すための“脱出ボタン”だ。</strong></p>
+          <p>最初の1冊は、無料（タダ）で聴ける。<br>
+          リスクはゼロ。得られるのは、失った時間と未来への希望だ。</p>
+          <p>さあ、ボタンを押せ。<br>
+          そして、耳から人生を変えろ。</p>
+          <a href="https://amzn.to/4ohVITR" target="_blank" class="audible-button">→ Audibleを30日間無料体験し、時間を奪い返す</a>
         </div>
       </div>
-
-      <h2>やりたいことは、「あなたの外」にある</h2>
-      <p>やりたいことは、頭の中でうんうん考えても見つからない。<br>動いた先、出会った人、ふと読んだ一冊の中に、<strong>“変な引っかかり”</strong>として見つかるものです。</p>
-
-      <p>「好きなことが見つからない」は、終わりじゃない。<br>むしろ、“やりたいこと”が見つかるスタート地点です。</p>
     </div>
   </div>
 

@@ -4,6 +4,7 @@ function calculate() {
   try {
     const birthdate = document.getElementById("birthdate").value;
     const ageInput = document.getElementById("age").value;
+    const favoriteSeason = document.getElementById("favoriteSeason").value;
     let age;
 
     if (birthdate) {
@@ -37,6 +38,7 @@ function calculate() {
       days: Math.floor(freeDays).toLocaleString(),
       hours: Math.floor(freeHours).toLocaleString(),
       minutes: Math.floor(freeMinutes).toLocaleString(),
+      remainingYears: remainingYears
     };
 
     const resultDiv = document.getElementById("result");
@@ -48,6 +50,27 @@ function calculate() {
       <p>約 ${resultData.hours} 時間</p>
       <p>約 ${resultData.minutes} 分</p>
     `;
+
+    const eventResultDiv = document.getElementById("event-result");
+    const remainingSeasonsCount = Math.floor(remainingYears);
+
+    let eventHTML = ``;
+
+    const seasonTemplates = {
+        "春": `あなたが桜の花びらを髪に受ける春は、あと ${remainingSeasonsCount}回 です。<br>桜並木の下で花びらが舞い落ちる瞬間<br>新しい制服やスーツで溢れる駅の朝<br>花粉症でポケットティッシュを使い切る日々<br>公園でお弁当を広げる家族連れの笑い声<br>冬物コートを片付けるか迷う肌寒い夕方`,
+        "夏": `あなたが夕立の後のアスファルトの匂いを嗅げる夏は、あと ${remainingSeasonsCount}回 です。<br>夕立の後のむっとした熱気<br>花火大会で浴衣姿の人が集まるざわめき<br>冷たいスイカをかじる甘さと種飛ばし<br>海水浴で砂を波で洗い流す感覚<br>セミの鳴き声が一斉にやむ真夏の午後`,
+        "秋": `あなたが金木犀の香りを感じられる秋は、あと ${remainingSeasonsCount}回 です。<br>焼き芋の甘い匂いに誘われる帰り道<br>落ち葉を踏むサクサクという音<br>夕焼けが街をオレンジ色に染める時間<br>金木犀の香りで深呼吸したくなる瞬間<br>読書の秋を気取りつつスマホを触る自分`,
+        "冬": `あなたが吐く息が白く見える冬は、あと ${remainingSeasonsCount}回 です。<br>息が白くなる嬉しさ<br>手袋を外した瞬間の冷気の痛み<br>鍋から立ち上る湯気とあたたかい匂い<br>コタツから出られなくなる夜<br>クリスマスのイルミネーションで浮き立つ街`
+    };
+
+    if (favoriteSeason && seasonTemplates[favoriteSeason]) {
+        eventHTML += `<p>${seasonTemplates[favoriteSeason]}</p>`;
+    } else {
+        // デフォルトは夏
+        eventHTML += `<p>🌻 ちなみに、あなたが夕立の後のアスファルトの匂いを嗅げる夏は、あと ${remainingSeasonsCount}回 です。<br>夕立の後のむっとした熱気<br>花火大会で浴衣姿の人が集まるざわめき<br>冷たいスイカをかじる甘さと種飛ばし<br>海水浴で砂を波で洗い流す感覚<br>セミの鳴き声が一斉にやむ真夏の午後</p>`;
+    }
+
+    eventResultDiv.innerHTML = eventHTML;
 
     document.getElementById("todo-area").style.display = "block";
     document.getElementById("guidance-section").style.display = "block";
@@ -86,3 +109,21 @@ function share() {
   const encodedText = encodeURIComponent(text + url);
   window.open(`https://twitter.com/intent/tweet?text=${encodedText}`);
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    const accordionHeader = document.querySelector('.accordion-header');
+    const accordionContent = document.querySelector('.accordion-content');
+    const accordionIcon = document.querySelector('.accordion-icon');
+
+    if (accordionHeader) {
+        accordionHeader.addEventListener('click', function () {
+            if (accordionContent.style.display === 'block') {
+                accordionContent.style.display = 'none';
+                accordionIcon.classList.remove('open');
+            } else {
+                accordionContent.style.display = 'block';
+                accordionIcon.classList.add('open');
+            }
+        });
+    }
+});
